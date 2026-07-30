@@ -1,3 +1,8 @@
+
+#leetcode-1672
+#Array 
+
+
 class Solution:
     def maximumWealth(self, accounts):
         max_wealth = 0
