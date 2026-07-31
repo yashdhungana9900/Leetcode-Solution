@@ -16,3 +16,5 @@ class Solution(object):
             total-=mat[n//2][n//2]
 
         return total 
+
+
