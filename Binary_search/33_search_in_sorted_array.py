@@ -27,4 +27,4 @@ class Solution(object):
                 else:
                     right = mid - 1
 
-        return -1
+        return -1                                                           
