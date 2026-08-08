@@ -1,40 +1,36 @@
-class ListNode:
-    def __init__(self,val=0, next=None):
-        self.val=val
-        self.next= next
-        
 class Solution(object):
-    def addTwoNumbers(self, l1, l2):
+    def isPalindrome(self, head):
 
-        dummy = ListNode(0)
-        current = dummy
+        if not head or not head.next:
+            return True
 
-        carry = 0
+        # Step 1: Find middle
+        slow = head
+        fast = head
 
-        while l1 or l2 or carry:
+        while fast and fast.next:
+            slow = slow.next
+            fast = fast.next.next
 
-            # Get values
-            val1 = l1.val if l1 else 0
-            val2 = l2.val if l2 else 0
+        # Step 2: Reverse second half
+        prev = None
+        curr = slow
 
-            # Add
-            total = val1 + val2 + carry
+        while curr:
+            nxt = curr.next
+            curr.next = prev
+            prev = curr
+            curr = nxt
 
-            # Digit to store
-            digit = total % 10
+        # Step 3: Compare both halves
+        left = head
+        right = prev
 
-            # New carry
-            carry = total // 10
+        while right:
+            if left.val != right.val:
+                return False
 
-            # Create node
-            current.next = ListNode(digit)
-            current = current.next
+            left = left.next
+            right = right.next
 
-            # Move pointers
-            if l1:
-                l1 = l1.next
-
-            if l2:
-                l2 = l2.next
-
-        return dummy.next
+        return True
